@@ -1,3 +1,6 @@
+/*
+ * DummyHeadLinkedList class implements linked list with dummyhead node.
+ */
 public class DummyHeadLinkedList<T> implements List<T>{
 
     private class Node{
@@ -33,20 +36,37 @@ public class DummyHeadLinkedList<T> implements List<T>{
 
     }
 
+    /* Returns element at specific index */
     @Override
     public T get(int index){
         if(index < 0 || index > count){
             throw new IndexOutOfBoundsException();
         }
+
+        Node current = head.next;
+        for(int i = 0; i < index; i++){
+            current = current.next;
+        }
+        return current.data;
     }
 
+    /* Removes element at specific index */
     @Override
     public T remove(int index){
-        if(index < 0 || index > count){
+        if(index < 0 || index >= count){
             throw new IndexOutOfBoundsException();
         }
+        Node current = head;
+        for(int i = 0; i < index; i++){
+            current = current.next;
+        }
+        Node removed = current.next;
+        current.next = removed.next;
+        count--;
+        return removed.data;
     }
 
+    /* Returns number of elements in the list */
     @Override
     public int size() {
         return count;

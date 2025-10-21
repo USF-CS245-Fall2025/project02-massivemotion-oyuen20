@@ -1,3 +1,7 @@
+/*
+* LinkedList class implements singly linked list.
+*/
+
 public class LinkedList<T> implements List<T> {
     private class Node{
         T data;
@@ -11,7 +15,7 @@ public class LinkedList<T> implements List<T> {
     private Node head;
     private int count;
 
-
+    /* Adds element at specific index */
     @Override
     public void add(int index, T element){
         if(index < 0 || index > count){
@@ -48,6 +52,7 @@ public class LinkedList<T> implements List<T> {
         return true;
     }
 
+    /* Returns element at specific index */
     @Override
     public T get(int index){
         if(index < 0 || index > count){
@@ -60,9 +65,10 @@ public class LinkedList<T> implements List<T> {
         return current.data;
     }
 
+    /* Removes element at specific index */
     @Override
     public T remove(int index){
-        if(index < 0 || index > count){
+        if(index < 0 || index >= count){
             throw new IndexOutOfBoundsException();
         }
         Node removed = null;
@@ -81,6 +87,7 @@ public class LinkedList<T> implements List<T> {
         return removed.data;
     }
 
+    /* Returns number of elements in the list */
     @Override
     public int size() {
         return count;
