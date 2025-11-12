@@ -102,9 +102,9 @@ public class LinkedList<T> implements List<T> {
             Node prev = head;
             for (int i = 0; i < index; i++) {
                 prev = prev.next;
-                removed = prev.next;
-                prev.next = removed.next;
             }
+            removed = prev.next;
+            prev.next = removed.next;
         }
         count--;
         return removed.data;

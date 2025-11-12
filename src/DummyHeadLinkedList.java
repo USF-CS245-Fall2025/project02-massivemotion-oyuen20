@@ -104,6 +104,10 @@ public class DummyHeadLinkedList<T> implements List<T>{
         }
         Node removed = current.next;
         current.next = removed.next;
+
+        if(removed.next != null){
+            removed.next.prev = current;
+        }
         count--;
         return removed.data;
     }
