@@ -1,5 +1,6 @@
-/*
+/**
  * DoublyLinkedList class implements doubly linked list.
+ * @param <T> the type of elements stored in the list
  */
 
 public class DoublyLinkedList<T> implements List<T>{
@@ -21,7 +22,13 @@ public class DoublyLinkedList<T> implements List<T>{
     }
 
 
-    /* Adds element at specific index */
+    /**
+     * Inserts the element at the specified position.
+     *
+     * @param index  the position at which to insert
+     * @param element the element to insert
+     * @throws IndexOutOfBoundsException if the index is out of range
+     */
     @Override
     public void add(int index, T element){
         if(index < 0 || index > count){
@@ -53,13 +60,24 @@ public class DoublyLinkedList<T> implements List<T>{
         }
     }
 
+    /**
+     * Adds the specified element to end of the list.
+     *
+     * @param element the element to append
+     * @return {@code true} if added successfully
+     */
     @Override
     public boolean add(T element) {
         add(count, element);
         return true;
     }
 
-    /* Returns element at specific index */
+    /** Returns element at specific index
+     *
+     * @param index the index to get
+     * @return the element at that index
+     * @throws IndexOutOfBoundsException if the index is out of range
+     */
     @Override
     public T get(int index){
         if(index < 0 || index > count){
@@ -73,7 +91,13 @@ public class DoublyLinkedList<T> implements List<T>{
         return current.data;
     }
 
-    /* Removes element at specific index */
+    /**
+     * Removes element at the specified index.
+     *
+     * @param index the index to remove
+     * @return the removed element
+     * @throws IndexOutOfBoundsException if the index is out of range
+     */
     @Override
     public T remove(int index){
         if(index < 0 || index >= count){
@@ -92,7 +116,9 @@ public class DoublyLinkedList<T> implements List<T>{
         return removed.data;
     }
 
-    /* Returns number of elements in the list */
+    /** Returns number of elements in the list
+     * @return the size of the list
+     * */
     @Override
     public int size() {
         return count;

@@ -17,11 +17,10 @@ public class MassiveMotion extends JPanel implements ActionListener {
     private int bodySize, bodyVelocity;
     private Random rand = new Random();
 
-    /*
+    /**
      * The configuration from the properties file is read, and the list of celestial objects initialized, timer starts
-     * @param String propFile for properties file
+     * @param propFile for properties file used to configure simulation
      */
-    // public MassiveMotion(String propfile) {
     public MassiveMotion(String propFile) {
         Properties properties = new Properties();
         try(FileInputStream inputStream = new FileInputStream(propFile)){
@@ -70,9 +69,9 @@ public class MassiveMotion extends JPanel implements ActionListener {
         tm.start();
     }
 
-    /*
+    /**
      * The celestial objects are painted, with the star being red and comets black.
-     * @param Graphics g for drawing
+     * @param g {@link Graphics} used for drawing
      */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -90,19 +89,21 @@ public class MassiveMotion extends JPanel implements ActionListener {
         tm.start();
     }
 
-    /*
+    /**
      * The position of celestial objects are changed by velocity.
      * If an object moves beyond the canvas boundaries, it's removed
-     * @param actionevent for timer
+     * @param actionEvent the event done by {@link Timer}
      */
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
+        //Move existing objects
         for(int i = 0; i < objects.size(); i++){
             CelestialObject obj = objects.get(i);
             obj.x += obj.dx;
             obj.y += obj.dy;
         }
 
+        //Remove objects off-screen
         for(int i = 0; i < objects.size(); i++){
             CelestialObject obj = objects.get(i);
             if(obj.x < 0 || obj.x > windowSizeX || obj.y < 0 || obj.y > windowSizeY){
@@ -150,9 +151,9 @@ public class MassiveMotion extends JPanel implements ActionListener {
         repaint();
     }
 
-    /*
-     * Main method initializes the simulation and reads file either from command line or from default properties file
-     * @param String[] args for command-line argument
+    /**
+     * Main method initializes the simulation and reads file either from command line or from default properties file {@code MassiveMotion.txt}
+     * @param args for command-line argument (optional)
      */
     public static void main(String[] args) {
         System.out.println("Massive Motion starting...");

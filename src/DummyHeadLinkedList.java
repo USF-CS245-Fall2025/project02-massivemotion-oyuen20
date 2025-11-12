@@ -1,7 +1,12 @@
-/*
+/**
  * DummyHeadLinkedList class implements linked list with dummyhead node.
+ * @param <T> the type of elements stored in the list
  */
 public class DummyHeadLinkedList<T> implements List<T>{
+
+    /**
+     * Constructs an empty list with a dummy head node.
+     */
     public DummyHeadLinkedList(){
         head = new Node();
         head.next = null;
@@ -19,6 +24,14 @@ public class DummyHeadLinkedList<T> implements List<T>{
     private int count;
     private Node head;
 
+
+    /**
+     * Inserts the element at the specified position.
+     *
+     * @param index  the position at which to insert
+     * @param element the element to insert
+     * @throws IndexOutOfBoundsException if the index is out of range
+     */
     @Override
     public void add(int index, T element){
         if(index < 0 || index > count){
@@ -41,6 +54,12 @@ public class DummyHeadLinkedList<T> implements List<T>{
         count++;
     }
 
+    /**
+     * Adds the specified element to end of the list.
+     *
+     * @param element the element to append
+     * @return {@code true} if added successfully
+     */
     @Override
     public boolean add(T element) {
         add(count, element);
@@ -48,7 +67,12 @@ public class DummyHeadLinkedList<T> implements List<T>{
 
     }
 
-    /* Returns element at specific index */
+    /** Returns element at specific index
+     *
+     * @param index the index to get
+     * @return the element at that index
+     * @throws IndexOutOfBoundsException if the index is out of range
+     */
     @Override
     public T get(int index){
         if(index < 0 || index >= count){
@@ -62,7 +86,13 @@ public class DummyHeadLinkedList<T> implements List<T>{
         return current.data;
     }
 
-    /* Removes element at specific index */
+    /**
+     * Removes element at the specified index.
+     *
+     * @param index the index to remove
+     * @return the removed element
+     * @throws IndexOutOfBoundsException if the index is out of range
+     */
     @Override
     public T remove(int index){
         if(index < 0 || index >= count){
@@ -78,7 +108,9 @@ public class DummyHeadLinkedList<T> implements List<T>{
         return removed.data;
     }
 
-    /* Returns number of elements in the list */
+    /** Returns number of elements in the list
+    * @return the size of the list
+    * */
     @Override
     public int size() {
         return count;
