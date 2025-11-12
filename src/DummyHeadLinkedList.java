@@ -2,6 +2,12 @@
  * DummyHeadLinkedList class implements linked list with dummyhead node.
  */
 public class DummyHeadLinkedList<T> implements List<T>{
+    public DummyHeadLinkedList(){
+        head = new Node();
+        head.next = null;
+        head.prev = null;
+        count = 0;
+    }
 
     private class Node{
         T data;
@@ -18,20 +24,26 @@ public class DummyHeadLinkedList<T> implements List<T>{
         if(index < 0 || index > count){
             throw new IndexOutOfBoundsException();
         }
-        Node newNode = new Node();
         Node current = head;
         for(int i = 0; i < index; i++){
             current = current.next;
         }
+
+        Node newNode = new Node();
+        newNode.data = element;
         newNode.next = current.next;
+        newNode.prev = current;
+
+        if(current.next != null){
+            current.next.prev = newNode;
+        }
         current.next = newNode;
         count++;
     }
 
     @Override
     public boolean add(T element) {
-        Node newNode = new Node();
-        Node current = head;
+        add(count, element);
         return true;
 
     }
@@ -39,7 +51,7 @@ public class DummyHeadLinkedList<T> implements List<T>{
     /* Returns element at specific index */
     @Override
     public T get(int index){
-        if(index < 0 || index > count){
+        if(index < 0 || index >= count){
             throw new IndexOutOfBoundsException();
         }
 
