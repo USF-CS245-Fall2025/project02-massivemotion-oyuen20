@@ -14,4 +14,5 @@ To manage these celestial bodies, the project includes multiple list implementat
 - LinkedList implements a singly linked list
 - DoublyLinkedList implements a doubly linked list
 - DummyHeadLinkedList uses a dummy head node to simply insertion and removal
+
 All list classes implement the List interface, which defines list operations used throughout the simulation.
