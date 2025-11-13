@@ -103,7 +103,8 @@ public class DoublyLinkedList<T> implements List<T>{
         if(index < 0 || index >= count){
             throw new IndexOutOfBoundsException();
         }
-        Node<T> removed = null;
+        Node<T> removed;
+
         if(index == 0){
             removed = head;
             head = head.next;
@@ -112,7 +113,22 @@ public class DoublyLinkedList<T> implements List<T>{
             } else{
                 tail = null;
             }
+        } else {
+            Node<T> current = head;
+            for(int i = 0; i < index -1; i++){
+                current = current.next;
+            }
+            removed = current.next;
+            current.next = removed.next;
+
+            if(removed.next != null){
+                removed.next.prev = current;
+            } else {
+                tail = current;
+            }
         }
+
+        count--;
         return removed.data;
     }
 

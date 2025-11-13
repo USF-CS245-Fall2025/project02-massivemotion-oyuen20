@@ -52,6 +52,10 @@ public class DummyHeadLinkedList<T> implements List<T>{
         }
         current.next = newNode;
         count++;
+
+        if(current.next != newNode){
+            throw new IllegalStateException("Add failed");
+        }
     }
 
     /**

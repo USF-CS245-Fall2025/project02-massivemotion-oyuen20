@@ -25,7 +25,6 @@ public class ArrayList<T> implements List<T> {
             throw new IndexOutOfBoundsException();
         }
 
-        // Resize array if needed
         if(count == arr.length){
             T[] newArr = (T[]) new Object[arr.length * 2];
             for(int i = 0; i < arr.length; i++){
@@ -34,7 +33,6 @@ public class ArrayList<T> implements List<T> {
             arr = newArr;
         }
 
-        // Shift elements
         for(int i = count - 1; i >= index; i--){
             arr[i + 1] = arr[i];
         }
