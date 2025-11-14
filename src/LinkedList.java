@@ -73,7 +73,7 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public T get(int index){
-        if(index < 0 || index > count){
+        if(index < 0 || index >= count){
             throw new IndexOutOfBoundsException();
         }
         Node current = head;
@@ -100,7 +100,7 @@ public class LinkedList<T> implements List<T> {
             head = head.next;
         } else {
             Node prev = head;
-            for (int i = 0; i < index; i++) {
+            for (int i = 0; i < index - 1; i++) {
                 prev = prev.next;
             }
             removed = prev.next;

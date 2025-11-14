@@ -52,23 +52,22 @@ public class DummyHeadLinkedList<T> implements List<T>{
         }
         current.next = newNode;
         count++;
-
-        if(current.next != newNode){
-            throw new IllegalStateException("Add failed");
-        }
     }
 
     /**
      * Adds the specified element to end of the list.
      *
      * @param element the element to append
-     * @return {@code true} if added successfully
+     * @return {@code true} if added successfully, {@code false} otherwise
      */
     @Override
     public boolean add(T element) {
-        add(count, element);
-        return true;
-
+        try{
+            add(count, element);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /** Returns element at specific index

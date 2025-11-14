@@ -37,14 +37,14 @@ public class DoublyLinkedList<T> implements List<T>{
 
         Node<T> newNode = new Node<>(element);
 
-        if(count == 0){ // first element
+        if(count == 0){
             head = newNode;
             tail = newNode;
-        } else if(index == 0){ //start of list
+        } else if(index == 0){
             newNode.next = head;
             head.prev = newNode;
             head = newNode;
-        } else if(index == count){ // end of list
+        } else if(index == count){
             tail.next = newNode;
             newNode.prev = tail;
             tail = newNode;
@@ -58,18 +58,23 @@ public class DoublyLinkedList<T> implements List<T>{
             current.prev.next = newNode;
             current.prev = newNode;
         }
+        count++;
     }
 
     /**
      * Adds the specified element to end of the list.
      *
      * @param element the element to append
-     * @return {@code true} if added successfully
+     * @return {@code true} if added successfully, {@code false} otherwise
      */
     @Override
     public boolean add(T element) {
-        add(count, element);
-        return true;
+        try{
+            add(count, element);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /** Returns element at specific index
@@ -80,7 +85,7 @@ public class DoublyLinkedList<T> implements List<T>{
      */
     @Override
     public T get(int index){
-        if(index < 0 || index > count){
+        if(index < 0 || index >= count){
             throw new IndexOutOfBoundsException();
         }
 
