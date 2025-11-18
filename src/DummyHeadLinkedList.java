@@ -10,13 +10,11 @@ public class DummyHeadLinkedList<T> implements List<T>{
     public DummyHeadLinkedList(){
         head = new Node();
         head.next = null;
-        head.prev = null;
         count = 0;
     }
 
     private class Node{
         T data;
-        Node prev;
         Node next;
 
     }
@@ -45,11 +43,8 @@ public class DummyHeadLinkedList<T> implements List<T>{
         Node newNode = new Node();
         newNode.data = element;
         newNode.next = current.next;
-        newNode.prev = current;
 
-        if(current.next != null){
-            current.next.prev = newNode;
-        }
+
         current.next = newNode;
         count++;
     }
@@ -108,9 +103,6 @@ public class DummyHeadLinkedList<T> implements List<T>{
         Node removed = current.next;
         current.next = removed.next;
 
-        if(removed.next != null){
-            removed.next.prev = current;
-        }
         count--;
         return removed.data;
     }

@@ -89,10 +89,19 @@ public class DoublyLinkedList<T> implements List<T>{
             throw new IndexOutOfBoundsException();
         }
 
-        Node<T> current = head;
-        for(int i = 0; i < index; i++){
-            current = current.next;
+        Node<T> current;
+        if(index < count / 2){
+            current = head;
+            for(int i = 0; i < index; i++){
+                current = current.next;
+            }
+        } else {
+            current = tail;
+            for(int i = count - 1; i > index; i--){
+                current = current.prev;
+            }
         }
+
         return current.data;
     }
 
